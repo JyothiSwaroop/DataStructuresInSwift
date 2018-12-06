@@ -52,7 +52,7 @@ extension LinkedList {
         tail!.next = Node(value: value)
         
         print(tail!.next!)
-        // ?? Tail is nil
-        tail! = tail!.next!
+        
+        tail = tail!.next!
     }
 }
