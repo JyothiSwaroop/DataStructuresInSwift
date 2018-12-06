@@ -23,3 +23,13 @@ example(of: "Push") {
     
     print(list)
 }
+
+example(of: "Append") {
+    var list = LinkedList<Any>()
+    
+    list.append(1)
+    list.append("Two")
+    list.append(3.0)
+    
+    print(list)
+}

@@ -1,16 +1,17 @@
 import Foundation
 
 // Linked List to manage Node objects
+// 3 Params: head, tail, isEmpty
 public struct LinkedList<Value> {
     
     public var head: Node<Value>?
     public var tail: Node<Value>?
     
-    public init() { }
-    
     public var isEmpty: Bool {
         return head == nil
     }
+
+    public init() { }
 }
 
 extension LinkedList: CustomStringConvertible {
@@ -37,7 +38,21 @@ extension LinkedList {
     public mutating func push(_ value: Value) {
         head = Node(value: value, next: head)
         if tail == nil {
-            tail = head
+            tail = head // Implies that Head and Tail points to same node
         }
+    }
+    
+    public mutating func append(_ value: Value) {
+        guard !isEmpty else {
+            push(value)
+            return
+        }
+        
+        // New node added to the Linked List tail node
+        tail!.next = Node(value: value)
+        
+        print(tail!.next!)
+        // ?? Tail is nil
+        tail! = tail!.next!
     }
 }
