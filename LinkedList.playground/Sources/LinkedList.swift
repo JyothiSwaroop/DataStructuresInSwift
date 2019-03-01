@@ -31,6 +31,7 @@ extension LinkedList: CustomStringConvertible {
 //}
 //extension LinkedList: ListOperations { }
 
+// Insertions
 extension LinkedList {
 
     // Head-first insertion
@@ -51,8 +52,30 @@ extension LinkedList {
         // New node added to the Linked List tail node
         tail!.next = Node(value: value)
         
-        print(tail!.next!)
-        
         tail = tail!.next!
+    }
+    
+    // Finding the node
+    public func node(at index: Int) -> Node<Value>? {
+        var currentNode = head
+        var currentIndex = 0
+        
+        while currentNode != nil && currentIndex < index {
+            currentNode = currentNode!.next
+            currentIndex += 1
+        }
+        
+        return currentNode
+    }
+    
+    public mutating func insert(_ value: Value,
+                                after node: Node<Value>) -> Node<Value> {
+        guard tail !== node else {
+            append(value)
+            return tail!
+        }
+        
+        node.next = Node(value:value, next: node.next)
+        return node.next!
     }
 }

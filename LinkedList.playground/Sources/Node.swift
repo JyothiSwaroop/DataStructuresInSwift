@@ -7,7 +7,7 @@ public class Node<Value> {
     // ?Redundant initializer?
     // Classes do force to provide a default initializer
     // Structures do not need an initializer and
-    // Structures forces to provide you the type of properties declared.
+    // Structures forces to provide the type of properties declared.
     public init(value: Value, next: Node? = nil) {
         self.value = value
         self.next = next
